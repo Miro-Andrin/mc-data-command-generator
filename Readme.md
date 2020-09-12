@@ -15,13 +15,18 @@ b) run main.py and make sure it finishes without any errors.
 Running main.py does the following:
 
 This code only runs if data is missing:
-    1) Download every missing mc-version that is not present in mc-data.
-    3) Run minecrafts data generator for all minecraft versions that dont have a .../reports/commands.json.
+
+    1. Download every missing mc-version that is not present in mc-data.
+
+    2. Run minecrafts data generator for all minecraft versions that dont have a .../reports/commands.json.
 
 This code always runs:
-    1) Generate our version of commands.json
-    2) Validate it against commands_schema.json and exit if a error is detected.
-    3) Copy all the commands.json files into the minecraf-data folder, along with commands_schema.json (if a suitable destination exists)
+
+    1. Generate our version of commands.json
+
+    2. Validate it against commands_schema.json and exit if a error is detected.
+
+    3. Copy all the commands.json files into the minecraf-data folder, along with commands_schema.json (if a suitable destination exists)
 
 
 
