@@ -1,0 +1,407 @@
+{
+ "brigadier:bool": {
+  "examples": [
+   "true",
+   "false"
+  ],
+  "regex": "true|false"
+ },
+ "brigadier:double": {
+  "examples": [],
+  "regex": ""
+ },
+ "brigadier:float{'min': -60000000.0, 'max': 60000000.0}": {
+  "examples": [],
+  "regex": ""
+ },
+ "brigadier:float{'min': 0.0, 'max': 1.0}": {
+  "examples": [
+   "0.0",
+   "0",
+   "1",
+   "1.0",
+   "0.5"
+  ],
+  "regex": ""
+ },
+ "brigadier:float{'min': 0.0, 'max': 2.0}": {
+  "examples": [
+   "0",
+   "2",
+   "1.0",
+   "2.0"
+  ],
+  "regex": ""
+ },
+ "brigadier:float{'min': 0.0}": {
+  "examples": [
+   "0.0",
+   "0",
+   "1",
+   "0.01"
+  ],
+  "regex": ""
+ },
+ "brigadier:float{'min': 1.0}": {
+  "examples": [
+   "1",
+   "1.0",
+   "1.000"
+  ],
+  "regex": ""
+ },
+ "brigadier:integer": {
+  "examples": [
+   "1",
+   "0",
+   "10"
+  ],
+  "regex": ""
+ },
+ "brigadier:integer{'min': -60000000, 'max': 60000000}": {
+  "examples": [
+   "-60000000",
+   "60000000",
+   "0",
+   "1",
+   "-1"
+  ],
+  "regex": ""
+ },
+ "brigadier:integer{'min': 0, 'max': 1000000}": {
+  "examples": [
+   "0",
+   "1000000"
+  ],
+  "regex": ""
+ },
+ "brigadier:integer{'min': 0, 'max': 255}": {
+  "examples": [
+   "0",
+   "255"
+  ],
+  "regex": ""
+ },
+ "brigadier:integer{'min': 0, 'max': 65535}": {
+  "examples": [
+   "0",
+   "65535"
+  ],
+  "regex": ""
+ },
+ "brigadier:integer{'min': 0}": {
+  "examples": [
+   "0",
+   "1"
+  ],
+  "regex": ""
+ },
+ "brigadier:integer{'min': 1, 'max': 1000000}": {
+  "examples": [
+   "1",
+   "1000000"
+  ],
+  "regex": ""
+ },
+ "brigadier:integer{'min': 1, 'max': 64}": {
+  "examples": [
+   "1",
+   "64"
+  ],
+  "regex": ""
+ },
+ "brigadier:integer{'min': 1}": {
+  "examples": [
+   "1"
+  ],
+  "regex": ""
+ },
+ "brigadier:string{'type': 'greedy'}": {
+  "examples": [
+   "word",
+   "words with spaces",
+   "\\\" and symbols\\\""
+  ],
+  "regex": ""
+ },
+ "brigadier:string{'type': 'phrase'}": {
+  "examples": [
+   "\\\"quoted phrase\\\"",
+   "word",
+   ""
+  ],
+  "regex": ""
+ },
+ "brigadier:string{'type': 'word'}": {
+  "examples": [
+   "word",
+   "word_with_underscore"
+  ],
+  "regex": ""
+ },
+ "minecraft:angle": {
+  "examples": [
+   "0",
+   "~",
+   "~-0.5"
+  ],
+  "regex": ""
+ },
+ "minecraft:block_pos": {
+  "examples": [
+   "0 0 0",
+   "~ ~ ~",
+   "^ ^ ^",
+   "^1 ^ ^-5",
+   "~0.5 ~1 ~-5"
+  ],
+  "regex": ""
+ },
+ "minecraft:block_predicate": {
+  "examples": [
+   "stone",
+   "minecraft:stone",
+   "#stone",
+   "minecraft:redstone_wire[power=15,north=up,south=side]",
+   "minecraft:furnace[facing=north]{BurnTime:200}"
+  ],
+  "regex": ""
+ },
+ "minecraft:block_state": {
+  "examples": [
+   "stone",
+   "minecraft:stone",
+   "minecraft:redstone_wire[power=15,north=up,south=side]",
+   "minecraft:furnace[facing=north]{BurnTime:200}"
+  ],
+  "regex": ""
+ },
+ "minecraft:color": {
+  "examples": [
+   "aqua",
+   "black",
+   "blue",
+   "dark_aqua",
+   "dark_blue",
+   "dark_gray",
+   "dark_green",
+   "dark_purple",
+   "dark_red",
+   "gold",
+   "gray",
+   "green",
+   "light_purple",
+   "red",
+   "reset",
+   "yellow",
+   "white"
+  ],
+  "regex": ""
+ },
+ "minecraft:column_pos": {
+  "examples": [
+   "0 0",
+   "~ ~",
+   "~1 ~-2",
+   "^ ^",
+   "^-1 ^0"
+  ],
+  "regex": ""
+ },
+ "minecraft:component": {
+  "examples": [
+   "\"hello world\"",
+   "\"\"",
+   "\"{\"text\":\"hello world\"}\"",
+   "[\"\"]"
+  ],
+  "regex": ""
+ },
+ "minecraft:dimension": {
+  "examples": [
+   "minecraft:overworld",
+   "minecraft:the_nether",
+   "minecraft:the_end",
+   "overworld",
+   "the_end",
+   "the_nether"
+  ],
+  "regex": ""
+ },
+ "minecraft:entity_anchor": {
+  "examples": [
+   "eyes",
+   "feet"
+  ],
+  "regex": ""
+ },
+ "minecraft:entity_summon": {
+  "examples": [
+   "minecraft:pig",
+   "cow"
+  ],
+  "regex": ""
+ },
+ "minecraft:entity{'amount': 'multiple', 'type': 'entities'}": {
+  "examples": [
+   "@e",
+   "@e[type=cow]",
+   "dd12be42-52a9-4a91-a8a1-11c01849e498",
+   "Player"
+  ],
+  "regex": ""
+ },
+ "minecraft:entity{'amount': 'multiple', 'type': 'players'}": {
+  "examples": [
+   "@a"
+  ],
+  "regex": ""
+ },
+ "minecraft:entity{'amount': 'single', 'type': 'entities'}": {
+  "examples": [
+   "@p"
+  ],
+  "regex": ""
+ },
+ "minecraft:entity{'amount': 'single', 'type': 'players'}": {
+  "examples": [
+   "@p"
+  ],
+  "regex": ""
+ },
+ "minecraft:function": {
+  "examples": [
+   "foo",
+   "foo:bar",
+   "#foo"
+  ],
+  "regex": ""
+ },
+ "minecraft:game_profile": {
+  "examples": [
+   "Player",
+   "0123",
+   "dd12be42-52a9-4a91-a8a1-11c01849e498",
+   "@e"
+  ],
+  "regex": ""
+ },
+ "minecraft:int_range": {
+  "examples": [
+   "0..5",
+   "0",
+   "-5",
+   "-100..",
+   "..100"
+  ],
+  "regex": ""
+ },
+ "minecraft:item_enchantment": {
+  "examples": [
+   "unbreaking",
+   "minecraft:slik_touch"
+  ],
+  "regex": ""
+ },
+ "minecraft:item_predicate": {
+  "examples": [
+   "stick",
+   "minecraft:stick",
+   "#stick",
+   "diamond_sword{ench:[{id:16,lvl:5}]}"
+  ],
+  "regex": ""
+ },
+ "minecraft:item_slot": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:item_stack": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:message": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:mob_effect": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:nbt": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:nbt_compound_tag": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:nbt_path": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:nbt_tag": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:objective": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:objective_criteria": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:operation": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:particle": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:resource_location": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:rotation": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:score_holder{'amount': 'multiple'}": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:score_holder{'amount': 'single'}": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:scoreboard_slot": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:swizzle": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:team": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:time": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:uuid": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:vec2": {
+  "examples": [],
+  "regex": ""
+ },
+ "minecraft:vec3": {
+  "examples": [],
+  "regex": ""
+ }
+}
