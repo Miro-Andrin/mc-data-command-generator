@@ -1,7 +1,7 @@
-import os, sys, hashlib,subprocess, json
+import os, sys, hashlib,subprocess, json, shutil
 from pathlib import Path
 from Node import Node
-
+from Parser import ParserMapping
 try:
     import requests
 
@@ -31,6 +31,7 @@ Links = {
     "1.16"   : "https://launcher.mojang.com/v1/objects/a0d03225615ba897619220e256a266cb33a44b6b/server.jar",
     "1.16.1" : "https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar",
     "1.16.2" : "https://launcher.mojang.com/v1/objects/c5f6fb23c3876461d46ec380421e42b289789530/server.jar",
+    "1.16.3" : "https://launcher.mojang.com/v1/objects/f02f4473dbf152c23d7d484952121db0b36698cb/server.jar"
 
 
 }
@@ -108,16 +109,28 @@ for version in Links.keys():
     n = Node.from_file(folder / f"./mc-data/{version}/generated/reports/commands.json")
     n.remove_unessesary_redirects(n)
 
-    with open(folder / f"./mc-data/{version}/commands.json","w") as fp:
-        json.dump(n.to_json(),fp,indent=1)
+    # Get the parser mapping. This lets us add the extra data about every parser. Here we
+    # can add stuff like testcases so that its easier to implement a parser propperly.
+    parsers = n.all_parsers()
+    mapping = ParserMapping(parsers)
 
+    data = {
+        "root" : n.to_json(),
+        "parsers" : mapping.to_json()
+    }
+
+    with open(folder / f"./mc-data/{version}/commands.json","w") as fp:
+        json.dump(data,fp,indent=1)
+
+
+for version in Links.keys():
 
     #Now we validate that generated commands.json follows the schema
-    if not os.path.exists(folder / f"./commands.schema"):
+    if not os.path.exists(folder / f"./commands_schema.json"):
         print("Could not find the command.schema file that should be in the same folder as mc-downloader.py!") 
         sys.exit(1)
 
-    with open(folder / "./commands.schema","r") as fp:
+    with open(folder / "./commands_schema.json","r") as fp:
         schema = json.load(fp)
     
     with open(folder / f"./mc-data/{version}/commands.json","r") as fp:
@@ -129,16 +142,22 @@ for version in Links.keys():
 
     except Exception as e:
         print(e)
-        print(f"Failed to validate ./mc-data/{version}/commands.json to match commands.schema" )
+        print(f"Failed to validate ./mc-data/{version}/commands.json to match commands_schema.json" )
         sys.exit(1)
 
     
-print("Done, evey commands.json generated and validated agains schema!")
+print("Done generating data, evey commands.json generated and validated agains schema!")
 print("The imporoved commands.json files can be found in ./mc-data/{version}/commands.json")
+print("Moving data to minecraft-data if possible.")
 
-
-
-
-
-
+for mc_version in Links.keys():
+    # Check that every mc version has a folder in minecraft-data
+    if not os.path.exists(folder / f"./minecraft-data/data/pc/{mc_version}"):
+        print(f"Warning minecraft-data does not have a folder for {mc_version}")
+        continue
     
+    
+    shutil.copyfile(folder / f"mc-data/{version}/commands.json",folder / f"minecraft-data/data/pc/{mc_version}/commands.json")
+
+
+shutil.copyfile(folder / f"commands_schema.json",folder / "minecraft-data/schemas/commands_schema.json")

@@ -48,6 +48,7 @@ class Node:
         #Atm.. All the "problematic" redirects are the ones pointing to the execute command. 
         #As part of this codebase we remove all redirects that are not problematic. 
         self.redirects = json_rep.get("redirect",[])
+
         
 
     def __eq__(self,other):
@@ -138,7 +139,28 @@ class Node:
 
         return data
 
-         
+        
+    def all_parsers(self, parsers=None):
+        if parsers == None:
+            parsers = []
+        
+        if self.type == "argument":
+            parser = {
+                "parser" : self.parser,
+                "modifier" : self.parser_modifier 
+            }
+            if not parser in parsers:
+                parsers.append(parser)
+            
+        for node in self:
+            if node != self:
+                node.all_parsers(parsers)
+
+        return parsers
+        
+
+
+        
         
 
 if __name__ == "__main__":
@@ -156,3 +178,6 @@ if __name__ == "__main__":
         json.dump(n.to_json(),fp,indent=1)
 
 
+    print(len(n.all_parsers()))
+
+    
