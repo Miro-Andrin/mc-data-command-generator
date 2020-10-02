@@ -238,7 +238,10 @@
  "minecraft:entity_summon": {
   "examples": [
    "minecraft:pig",
-   "cow"
+   "cow",
+   "minecraft:ender_dragon",
+   "fox",
+   "ghast"
   ],
   "regex": ""
  },
@@ -246,26 +249,31 @@
   "examples": [
    "@e",
    "@e[type=cow]",
+   "@e[type=armor_stand,distance=..5]",
    "dd12be42-52a9-4a91-a8a1-11c01849e498",
-   "Player"
+   "Player",
+   "@e[limit=10]"
   ],
   "regex": ""
  },
  "minecraft:entity{'amount': 'multiple', 'type': 'players'}": {
   "examples": [
-   "@a"
+   "@a",
+   "@a[gamemode=creative]"
   ],
   "regex": ""
  },
  "minecraft:entity{'amount': 'single', 'type': 'entities'}": {
   "examples": [
-   "@p"
+   "@p",
+   "@e[type=fox,limit=1]"
   ],
   "regex": ""
  },
  "minecraft:entity{'amount': 'single', 'type': 'players'}": {
   "examples": [
-   "@p"
+   "@p",
+   "@a[name=OxKitsune]"
   ],
   "regex": ""
  },
